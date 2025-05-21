@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskify - Smart To-Do List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen font-sans">
+    <div class="container mx-auto px-4 py-6 sm:py-8 max-w-3xl">
+        <!-- Header -->
+        <header class="mb-6 sm:mb-8 text-center">
+            <h1 class="text-3xl sm:text-4xl font-bold text-indigo-700 mb-2">Taskify</h1>
+            <p class="text-sm sm:text-base text-indigo-800">Organize your life, one task at a time</p>
+            <div class="mt-3 sm:mt-4 flex justify-center flex-wrap gap-2">
+                <span class="px-2 sm:px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs sm:text-sm">Simple</span>
+                <span class="px-2 sm:px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs sm:text-sm">Intuitive</span>
+                <span class="px-2 sm:px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs sm:text-sm">Productive</span>
+            </div>
+        </header>
+
+        <!-- Add Task Form -->
+        <div class="glass rounded-xl p-4 sm:p-6 mb-6">
+            <form id="task-form" class="flex flex-col sm:flex-row gap-3">
+                <div class="flex-grow">
+                    <input 
+                        type="text" 
+                        id="task-input" 
+                        placeholder="What needs to be done?" 
+                        class="glass-input w-full px-4 py-3 text-sm sm:text-base border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        required
+                    >
+                </div>
+                <div class="flex items-center gap-2">
+                    <select id="priority-select" class="glass-input text-sm sm:text-base px-3 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <button 
+                        type="submit" 
+                        class="px-4 sm:px-5 py-2.5 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-sm sm:text-base flex items-center"
+                    >
+                        <i class="fas fa-plus mr-2"></i> Add
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Task Filters -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-4 px-2 gap-2 sm:gap-0">
+            <div class="text-xs sm:text-sm text-indigo-800">
+                <span id="task-count">0</span> tasks remaining
+            </div>
+            <div class="flex space-x-1 sm:space-x-2 filter-buttons">
+                <button id="filter-all" class="filter-btn active px-3 sm:px-4 py-1.5 bg-indigo-600 text-white rounded-xl text-xs sm:text-sm shadow-sm">All</button>
+                <button id="filter-active" class="filter-btn px-3 sm:px-4 py-1.5 bg-white bg-opacity-70 text-indigo-800 rounded-xl text-xs sm:text-sm hover:bg-opacity-100 shadow-sm">Active</button>
+                <button id="filter-completed" class="filter-btn px-3 sm:px-4 py-1.5 bg-white bg-opacity-70 text-indigo-800 rounded-xl text-xs sm:text-sm hover:bg-opacity-100 shadow-sm">Completed</button>
+            </div>
+        </div>
+
+        <!-- Task List -->
+        <div id="task-list" class="glass rounded-xl overflow-hidden">
+            <div id="no-tasks" class="p-6 sm:p-8 text-center text-indigo-800">
+                <i class="fas fa-clipboard-list text-3xl sm:text-4xl mb-3 text-indigo-300"></i>
+                <p class="text-sm sm:text-base">No tasks yet. Add one above!</p>
+            </div>
+            <!-- Tasks will be added here dynamically -->
+        </div>
+
+        <!-- Stats and Actions -->
+        <div class="mt-4 sm:mt-6 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm text-indigo-800 px-2 gap-2 sm:gap-0">
+            <div class="mb-0 sm:mb-0">
+                <span id="completed-count">0</span> of <span id="total-count">0</span> tasks completed
+            </div>
+            <div>
+                <button id="clear-completed" class="text-indigo-700 hover:text-indigo-900 hover:underline text-xs sm:text-sm font-medium">
+                    <i class="fas fa-trash-alt mr-1"></i> Clear completed
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="function.js"></script>
+</html>
